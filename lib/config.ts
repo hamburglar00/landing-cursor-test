@@ -1,4 +1,3 @@
-//T
 import type { LandingPhoneResponse, LandingPublicConfig } from "./types";
 
 function ensureHttps(url: string) {
