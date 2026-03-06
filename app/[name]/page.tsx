@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { fetchLandingConfig } from "@/lib/config";
+import { fetchLandingConfig } from "../../lib/config";
 import LandingClient from "./LandingClient";
 
 // Evita que Vercel intente pre-renderizar en build (y llame a Supabase sin env)

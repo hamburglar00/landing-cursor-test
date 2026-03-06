@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import type { LandingPublicConfig } from "@/lib/types";
+import type { LandingPublicConfig } from "../../lib/types";
 
 function normEmail(v: string | null) {
   return (v || "").trim().toLowerCase();
