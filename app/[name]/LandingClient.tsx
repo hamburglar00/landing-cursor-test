@@ -73,7 +73,8 @@ export default function LandingClient({ config }: { config: LandingPublicConfig 
   useEffect(() => {
     const externalId = getOrCreateExternalId();
 
-    (function (f: any, b: any, e: any, v: any, n: any, t: any, s: any) {
+    (function (f: any, b: any, e: any, v: any) {
+      let n: any, t: any, s: any;
       if (f.fbq) return;
       n = f.fbq = function () {
         n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
@@ -94,15 +95,13 @@ export default function LandingClient({ config }: { config: LandingPublicConfig 
     window.fbq = window.fbq || function () {};
 
     try {
-      // @ts-ignore
-      fbq("init", config.tracking.pixelId, {
+      (window as any).fbq("init", config.tracking.pixelId, {
         external_id: externalId,
         em: userEmail || void 0,
         ph: userPhone || void 0,
         country: "AR",
       });
-      // @ts-ignore
-      fbq("track", "PageView");
+      (window as any).fbq("track", "PageView");
     } catch {}
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [config.tracking.pixelId]);
@@ -175,9 +174,8 @@ export default function LandingClient({ config }: { config: LandingPublicConfig 
     const event_id = generateUUID();
 
     try {
-      // @ts-ignore
-      if (window.fbq)
-        fbq(
+      if ((window as any).fbq)
+        (window as any).fbq(
           "track",
           "Contact",
           {
